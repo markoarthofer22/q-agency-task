@@ -1,0 +1,62 @@
+@import "../../css/variables.scss";
+
+.hero-box {
+    width: 100%;
+    height: 650px;
+    position: relative;
+    z-index: 1000;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--helper-img {
+        position: absolute;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    &--title {
+        font-size: 3.5rem;
+        color: $white;
+        font-weight: 700;
+        font-family: $title-font;
+
+        @include sm {
+            font-size: 4.5rem;
+        }
+
+        @include lg {
+            font-size: 6.2rem;
+        }
+
+        span {
+            display: inline-block;
+            font-size: inherit;
+            font-weight: inherit;
+            color: $light-blue;
+        }
+    }
+
+    &--subtitle {
+        font-size: 2.2rem;
+        line-height: 3.6rem;
+        color: #fefefe;
+        font-family: $font;
+
+        @include md {
+            font-size: 2.2rem;
+        }
+
+        @include lg {
+            font-size: 2.6rem;
+        }
+    }
+}

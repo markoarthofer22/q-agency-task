@@ -18,6 +18,7 @@ const App = (props) => {
                 <meta name="geo.placename" content="" />
                 <meta name="geo.position" content="45.60000;19.20000" />
                 <meta name="ICBM" content="45.60000;19.20000" />
+                <title>Q Agency | Home</title>
             </Helmet>
 
             <div className="wrapper">

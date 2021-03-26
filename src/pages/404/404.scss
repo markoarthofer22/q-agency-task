@@ -1,0 +1,29 @@
+@import '../../css/variables.scss';
+
+.no-page {
+    background-color: #f3f0e8;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    padding-top: 200px;
+
+    .four-o-four {
+        text-align: center;
+
+        img {
+            width: 200px;
+        }
+
+        h2 {
+            font-size: 8rem;
+            font-family: $title-font;
+            font-weight: 700;
+            margin: 0px;
+
+            span {
+                display: block;
+                font-weight: 400;
+                font-size: 4rem;
+            }
+        }
+    }
+}

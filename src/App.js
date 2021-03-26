@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+//Global scss
+import "./css/App.scss";
+//Components
+// import Header from "./components/header/header.component";
+import GlobalLoader from "./components/loaders/global.loader.component";
+//helmet
+import Helmet from "react-helmet";
+import Routes from "./routes/Routes";
+
+const App = (props) => {
+    return (
+        <>
+            <Helmet>
+                <meta name="geo.region" content="RS-01" />
+                <meta name="geo.placename" content="" />
+                <meta name="geo.position" content="45.60000;19.20000" />
+                <meta name="ICBM" content="45.60000;19.20000" />
+            </Helmet>
+
+            <div className="wrapper">
+                <Switch>
+                    {Routes[0].routes.map((routes, index) => (
+                        <Route key={index} path={routes.path} exact={routes.exact} component={routes.component} />
+                    ))}
+                </Switch>
+            </div>
+
+            <GlobalLoader />
+        </>
+    );
+};
 
 export default App;

@@ -1,0 +1,201 @@
+@import "../../css/variables.scss";
+
+.footer {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    & > .container {
+        margin-bottom: 60px;
+    }
+
+    &-image {
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 420px;
+        margin-bottom: 40px;
+    }
+
+    .swiper-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    &-nav {
+        & h4 {
+            color: #5a4941;
+            font-weight: 400;
+            text-align: center;
+
+            @include xl {
+                text-align: left;
+            }
+        }
+        &-list {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-align: center;
+
+            @include xl {
+                text-align: left;
+            }
+        }
+        &-item {
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+            & a {
+                color: #5a4941;
+                text-decoration: none;
+                padding: 4px;
+                transition: color 0.3s;
+                font-weight: 300;
+
+                &:hover {
+                    color: #897d78;
+                }
+            }
+        }
+    }
+
+    h4 {
+        font-weight: bold;
+    }
+
+    &-contact {
+        & h4 {
+            color: #5a4941;
+            text-align: center;
+
+            @include xl {
+                text-align: left;
+            }
+        }
+
+        & ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            color: #5a4941;
+            text-align: center;
+
+            @include xl {
+                text-align: left;
+            }
+
+            & li {
+                &:not(:last-child) {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+
+    &-social {
+        & h4 {
+            color: #5a4941;
+
+            text-align: center;
+
+            @include xl {
+                text-align: left;
+            }
+        }
+        &-tags {
+            list-style: none;
+            font-weight: 700;
+            color: #5a4941;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+
+            @include xl {
+                justify-content: flex-start;
+                flex-direction: row;
+            }
+
+            & li {
+                &:not(:last-child) {
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        &-network {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+
+            @include xl {
+                justify-content: flex-start;
+            }
+
+            & li {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #f1efe9;
+                border-radius: 50%;
+
+                &:not(:last-child) {
+                    margin-right: 20px;
+                }
+
+                &:hover {
+                    & svg {
+                        fill: #897d78;
+                        transform: scale(1.2);
+                    }
+                }
+
+                & a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 15px;
+                    //background-color: blue;
+
+                    & svg {
+                        width: 20px;
+                        height: 20px;
+                        fill: #5a4941;
+                        transition: all 0.4s;
+                    }
+                }
+            }
+        }
+    }
+
+    &-responsibility {
+        background-color: #ca0020;
+        & p {
+            color: #ffffff;
+            margin: 0;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+    }
+}
+
+.footer-card {
+    height: 80px;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s;
+    backface-visibility: hidden;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+}

@@ -1,0 +1,363 @@
+@import '../../css/variables.scss';
+
+section.index-page {
+    position: relative;
+    overflow: hidden;
+    .experts {
+        margin-top: 4rem;
+        position: relative;
+        z-index: 2;
+
+        @include sm {
+            margin-top: 12rem;
+        }
+
+        .bg-right {
+            z-index: 1;
+            position: absolute;
+            max-width: 100%;
+            top: -22rem;
+            right: 0;
+            display: none;
+            @include lg {
+                display: block;
+            }
+        }
+
+        .bg-left {
+            z-index: 1;
+            position: absolute;
+            max-width: 100%;
+            bottom: -14rem;
+            left: 0;
+            display: none;
+            @include lg {
+                display: block;
+            }
+        }
+
+        @include lg {
+            margin-top: 26rem;
+        }
+
+        .flexed {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+            @include lg {
+                flex-direction: row;
+            }
+
+            .flexed-item {
+                flex-basis: 100%;
+                &:first-of-type {
+                    margin-bottom: 5rem;
+                }
+
+                @include lg {
+                    flex-basis: 50%;
+                    &:first-of-type {
+                        margin-bottom: 0;
+                        margin-right: 6rem;
+                    }
+                }
+            }
+        }
+
+        &--flex-image {
+            height: auto;
+            width: 90%;
+
+            box-shadow: 0px 40px 40px rgba(0, 0, 0, 0.1);
+
+            &.desktop {
+                display: none;
+
+                @include lg {
+                    margin: 2rem 0 4rem;
+
+                    display: block;
+                }
+            }
+
+            &.mobile {
+                display: block;
+                margin: 2rem auto 4rem;
+                @include lg {
+                    display: none;
+                }
+            }
+
+            @include lg {
+                width: calc(100% - 40px);
+            }
+        }
+
+        span.blue-text {
+            color: $light-blue;
+        }
+
+        span.orange-text {
+            color: $orange;
+        }
+
+        &--title {
+            font-size: 3rem;
+            color: $dark-blue;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            margin-top: -1.8rem;
+            font-family: $title-font;
+            font-weight: 700;
+            text-align: center;
+
+            @include sm {
+                text-align: initial;
+                font-size: 5.2rem;
+            }
+        }
+
+        &--subtitle {
+            font-size: 1.8rem;
+            line-height: 1.4;
+            font-family: $font;
+            font-weight: 400;
+            text-align: center;
+
+            @include sm {
+                text-align: initial;
+                font-size: 2.6rem;
+            }
+        }
+
+        &--bullets {
+            margin: 3.5rem 0rem 0rem;
+
+            @include lg {
+                margin: 7.5rem 0rem 1rem;
+            }
+        }
+
+        &--bullet {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 3rem;
+            flex-direction: row;
+
+            @include sm {
+                justify-content: flex-start;
+                margin-bottom: 5rem;
+            }
+
+            p.content {
+                font-size: 1.6rem;
+                color: $light-blue;
+                font-family: $font;
+                font-weight: 600;
+                margin-top: 1rem;
+                text-align: center;
+                max-width: 50%;
+                margin-left: 2rem;
+                @include sm {
+                    text-align: left;
+                }
+                @include lg {
+                    max-width: unset;
+                    // margin-top: 0;
+                }
+            }
+
+            .icon-holder {
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 0;
+                height: 100px;
+                flex: 0 0 100px;
+                width: 100px;
+                background-color: $white;
+                box-shadow: 8px 11px 18px 1px rgba(0, 0, 0, 0.15);
+
+                @include lg {
+                    margin-right: 3rem;
+                }
+                img {
+                    &.dollar {
+                        width: 60px;
+                        height: 50px;
+                    }
+
+                    &.ship {
+                        width: 53px;
+                        height: 55px;
+                    }
+
+                    &.global {
+                        width: 47px;
+                        height: 45px;
+                    }
+
+                    &.lock {
+                        width: 31px;
+                        height: 37px;
+                    }
+                }
+            }
+        }
+
+        &--actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @include lg {
+                display: block;
+            }
+
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                font-size: 12px;
+                letter-spacing: 1px;
+                font-weight: 800;
+                text-transform: uppercase;
+                font-family: $title-font;
+
+                @include md {
+                    font-size: 16px;
+                    height: 85px;
+                }
+
+                &::before {
+                    background-color: $dark-orange;
+                }
+
+                svg {
+                    fill: $white;
+                    width: 30px;
+                    height: 30px;
+                    position: relative;
+                    transform: none;
+                    left: unset;
+                    top: unset;
+                }
+            }
+        }
+    }
+
+    .highlights {
+        margin: 8rem 0 4rem;
+
+        @include sm {
+            margin: 18rem 0;
+        }
+
+        &--content {
+            background-repeat: no-repeat;
+            background-position: top left;
+            background-size: cover;
+            padding: 10rem 0 8rem;
+
+            @include sm {
+                padding: 20rem 0 12rem;
+            }
+        }
+
+        &-swiper {
+            overflow: initial;
+
+            .swiper-pagination {
+                bottom: -40px;
+            }
+
+            .swiper-pagination-bullet {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    }
+
+    .index-header {
+        position: relative;
+        z-index: 1001;
+        margin-top: 140px;
+        padding: 0 15px;
+
+        @include lg {
+            margin-top: 270px;
+        }
+
+        &--txt-content {
+            position: relative;
+
+            .title {
+                color: $white;
+                font-size: 3rem;
+                margin-bottom: 2rem;
+                font-family: $title-font;
+                font-weight: 700;
+
+                span {
+                    display: inline-block;
+                    color: $light-blue;
+                    font-size: inherit;
+                    font-weight: 700;
+                }
+
+                @include sm {
+                    font-size: 4rem;
+                }
+
+                @include md {
+                    font-size: 5.2rem;
+                }
+
+                @include lg {
+                    font-size: 6.2rem;
+                }
+            }
+
+            .subtitle {
+                color: $white;
+                font-size: 1.8rem;
+                font-family: $font;
+                font-weight: 400;
+
+                span {
+                    display: inline-block;
+                    color: $light-blue;
+                    font-size: inherit;
+                }
+
+                @include sm {
+                    font-size: 2.6rem;
+                }
+            }
+        }
+
+        &--selection-box {
+            margin-top: 3rem;
+            position: relative;
+            // bottom: 50%;
+            // transform: translateY(50%);
+            width: 100%;
+            transition: all 0.3s ease-in-out;
+
+            @include sm {
+                // transform: none;
+                // bottom: 165px;
+                max-width: 700px;
+
+                &.expand {
+                    // bottom: 80px;
+                }
+            }
+        }
+    }
+}

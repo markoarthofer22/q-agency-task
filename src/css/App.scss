@@ -1,0 +1,371 @@
+//import order is very important!
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto:wght@400;700&display=swap");
+@import "bootstrap-reboot";
+@import "variables";
+@import "bootstrap-grid";
+@import "../components/buttons/buttons";
+//libs
+@import "./libs/swiper";
+@import "./libs/animate";
+
+html {
+    font-size: $font-size-main;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    -ms-overflow-style: scrollbar;
+}
+
+body {
+    // font-family: $font, sans-serif;
+    font-family: $font;
+    font-size: $font-size-main;
+    line-height: 1.231;
+    height: 100%;
+    color: $black;
+    background-color: $background !important;
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior-y: none;
+    -webkit-font-smoothing: antialiased;
+    position: static;
+    overflow-y: auto;
+
+    &.no-scroll {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        overflow-y: scroll;
+    }
+
+    &::before {
+        content: "x-small";
+        display: none;
+
+        @include sm {
+            content: "small";
+        }
+        @include md {
+            content: "medium";
+        }
+        @include lg {
+            content: "large";
+        }
+
+        @include xl {
+            content: "x-large";
+        }
+    }
+}
+
+//Containers
+
+.text-center {
+    text-align: center;
+}
+
+//standard elements
+p {
+    font-size: 1rem;
+    color: $grey;
+    font-weight: 300;
+    line-height: 1.8rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    // font-family: $h-font, sans-serif;
+    margin: 0.47em 0;
+    font-weight: 300;
+    color: $black;
+}
+
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 3.4rem;
+}
+h3 {
+    font-size: 2rem;
+}
+h4 {
+    font-size: 1.6rem;
+}
+h5 {
+    font-size: 1.2rem;
+}
+h6 {
+    font-size: 1.1rem;
+}
+
+b,
+strong {
+    color: $black;
+    font-weight: 700;
+}
+
+.title {
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: 700;
+
+    span {
+        display: block;
+
+        font-size: 0.5em;
+        font-weight: 300;
+    }
+
+    &.underline {
+        text-decoration: underline;
+    }
+
+    &.bold {
+        font-weight: 700;
+    }
+}
+
+//title colors
+
+.title {
+    &.red {
+        color: $warning-red;
+    }
+
+    .blue {
+        color: $darker-blue;
+    }
+}
+
+// form elements
+
+/************************************** SECONDARY NAVIGATION - vertical navigation **************************************/
+
+/***** DEFAULT TABLE *********/
+.table .row {
+    padding: 10px 0;
+    border-bottom: 1px solid $light-grey;
+    transition: all 0.3s;
+}
+
+.table .row:hover {
+    background-color: transparent;
+}
+
+.table .thead {
+    font-weight: 700;
+    text-align: center;
+    color: $white;
+}
+
+/***** LISTS *******/
+
+.list {
+    //.list is ul element!
+    margin: 0;
+    list-style-type: none;
+
+    li {
+        position: relative;
+    }
+
+    li a {
+        color: #333;
+        display: block;
+        padding: 10px;
+        border-bottom: 1px solid $light-grey;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: $dark-blue;
+            color: $white;
+        }
+    }
+    li:last-child a {
+        border-bottom: none;
+    }
+}
+
+/* CONTEXT MENU */
+
+.open-context {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.open-context:hover .context-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.context-menu {
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    right: 50px;
+    opacity: 0;
+    min-width: 170px;
+    z-index: 3;
+    transition: all 0.4s;
+
+    & > ul {
+        margin: 0;
+        list-style: none;
+        background-color: $dark-blue;
+        border-radius: 4px;
+        max-height: 500px;
+        opacity: 1;
+
+        li [class*="icon-"] {
+            width: 18px;
+            margin-right: 7px;
+        }
+
+        a {
+            display: block;
+            cursor: pointer;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            font-weight: 300;
+            font-size: 0.6rem;
+            text-align: left;
+            color: $white;
+            transition: all 0.3s;
+
+            &:hover {
+                background-color: $white;
+                color: $dark-blue;
+            }
+        }
+    }
+}
+
+/*LAYOUT*/
+.App,
+#root {
+    height: 100%;
+}
+
+.outer-wrapper {
+    position: relative;
+    height: 100%;
+}
+
+.wrapper {
+    position: relative;
+    min-height: 100%;
+    // background-color: #fff;
+    display: flex;
+    flex-direction: column;
+
+    .side-content {
+        width: auto;
+        transition: all 0.6s;
+        min-height: 100%; // width: 100%;
+        padding-top: 80px;
+        overflow: hidden;
+        flex: 1 0 0;
+        margin-left: 0px;
+
+        @include xl {
+            margin-left: 0;
+        }
+    }
+
+    .side-panel.open ~ .side-content {
+        margin-left: 0px;
+
+        @include sm {
+            margin-left: 50px;
+        }
+
+        @include xl {
+            margin-left: 300px;
+        }
+    }
+}
+
+.middle-wrap {
+    position: relative;
+}
+
+main.bottom-wrap {
+    position: relative;
+    flex: 1 0 auto;
+    min-height: 100vh;
+}
+
+//Animated text
+.animated-text {
+    background: linear-gradient(to right, #df3231 0%, #12afde 30%, #df3231 60%, #12afde 100%);
+    background-size: 200% auto;
+
+    color: #000;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.4s ease-out;
+    animation: shine 6s linear infinite;
+
+    @keyframes shine {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+}
+
+.content {
+    .container-yt {
+        width: 100%;
+
+        iframe {
+            width: 100%;
+            min-height: 400px;
+        }
+    }
+}
+
+.container-yt {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+.video-yt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.respondTo {
+    --size: xs;
+
+    @include md {
+        --size: md;
+    }
+
+    @include sm {
+        --size: sm;
+    }
+
+    @include xl {
+        --size: lg;
+    }
+}

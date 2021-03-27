@@ -1,11 +1,19 @@
-import React, { useState, useEffect } from "react";
-//component
-
+import React, { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
 // styles
-import "./herobox.scss";
+import "./styles.scss";
+
+// Context
+import { ContextApp } from "../../contextStore/context";
 
 const HeroBox = (props) => {
     const { heroClass, bgImage, title, subtitle } = props;
+    const [componentName] = useState("HeroBox");
+    const { appState } = useContext(ContextApp);
+
+    useEffect(() => {
+        console.log(`${appState.propsMessage} ${componentName}`);
+    }, []);
 
     return (
         <section className={`hero-box ${heroClass ? heroClass : ""}`}>
@@ -29,6 +37,13 @@ const HeroBox = (props) => {
             )}
         </section>
     );
+};
+
+HeroBox.propTypes = {
+    heroClass: PropTypes.string,
+    bgImage: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string
 };
 
 export default HeroBox;

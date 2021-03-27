@@ -39,16 +39,25 @@
 .popup > .window .close-button {
     position: absolute;
     padding: 0;
-    right: 6px;
-    top: 6px;
+    right: 30px;
+    top: 25px;
     transition: all 0.6s;
     border: none;
     z-index: 100;
+    width: 20px;
+    height: 20px;
     svg {
-        fill: #000;
-        width: 35px;
-        height: 35px;
+        fill: $orange;
+        width: 20px;
+        height: 20px;
         border: none;
+        transition: all 0.6s ease;
+    }
+
+    &:hover {
+        svg {
+            transform: rotate(90deg);
+        }
     }
 }
 

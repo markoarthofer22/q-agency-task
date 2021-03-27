@@ -1,0 +1,106 @@
+@import "variables";
+
+[class*=" net-"],
+[class^="net-"] {
+    font-family: nettv-icons !important;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.net-smart-tv:before {
+    content: "\E908";
+    color: #fff;
+}
+
+.net-racunar:before {
+    content: "\E905";
+    color: #fff;
+}
+
+.net-tablet:before {
+    content: "\E90A";
+    color: #fff;
+}
+
+.net-mobilni:before {
+    content: "\E90B";
+    color: #fff;
+}
+
+.net-box:before {
+    content: "\E900";
+    color: #fff;
+}
+
+.net-tooltip:before {
+    content: "\E904";
+}
+
+.net-phone2:before {
+    content: "\E901";
+    color: #fff;
+}
+
+.net-tablet2:before {
+    content: "\E909";
+    color: #fff;
+}
+
+.net-arrow-thin-left:before {
+    content: "\E91E";
+}
+
+.net-cart:before {
+    content: "\E91A";
+}
+
+.net-eye:before {
+    content: "\E91B";
+}
+
+.net-confirm:before {
+    content: "\E91D";
+}
+
+.net-united-group:before {
+    content: "\E95B";
+}
+
+.net-plus:before {
+    content: "\E951";
+}
+
+.net-back:before {
+    content: "\E90F";
+}
+
+.net-checkmark:before {
+    content: "\E916";
+}
+
+.net-dropdown:before {
+    content: "\E915";
+    color: #999;
+}
+
+.net-arrow-down:before {
+    content: "\E902";
+}
+
+.net-arrow-up:before {
+    content: "\E903";
+}
+
+.net-close:before {
+    content: "\E907";
+}
+
+.net-hamburger:before {
+    content: "\E906";
+}

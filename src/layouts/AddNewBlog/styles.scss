@@ -1,0 +1,129 @@
+@import "../../css/variables.scss";
+
+@import "../../css/variables.scss";
+
+.default-form {
+    width: 100%;
+    border-radius: 20px;
+    background-color: $white;
+    padding: 2rem 3rem;
+    position: relative;
+
+    .form-item-floating {
+        input {
+            border: 2px solid #a7b0b4;
+            height: 40px;
+
+            @include md {
+                height: 60px;
+            }
+
+            &:focus {
+                border: 2px solid $orange;
+
+                & + label {
+                    color: $orange;
+                }
+            }
+        }
+
+        label {
+            position: absolute;
+            left: 25px;
+            font-size: 1.6rem;
+            line-height: 2.1rem;
+            color: #a7b0b4;
+            background-color: transparent;
+            font-family: $font;
+            border-radius: 5px;
+        }
+
+        textarea {
+            border: 2px solid #a7b0b4;
+            height: 200px;
+            &:focus {
+                border: 2px solid $orange;
+
+                & + label {
+                    color: $orange;
+                    top: 0;
+                    transform: translateY(calc(-100% +9px)) scale(0.9);
+                }
+            }
+
+            &:valid {
+                & + label {
+                    top: 0;
+                    transform: translateY(calc(-100% + 9px)) scale(0.9);
+                }
+            }
+
+            & + label {
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                transform: translateY(-50%);
+                user-select: none;
+                pointer-events: none;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .button {
+        position: absolute;
+        bottom: calc(0px - 32px);
+        right: 50%;
+        transform: translateX(50%);
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-right: 0;
+        background-color: $orange;
+        padding: 10px 40px;
+        height: auto;
+        font-size: 2rem;
+        font-family: $font;
+        color: $white;
+        border: 1px solid transparent;
+        border-radius: 25px;
+        box-shadow: 0px 16px 48px 0px transparent;
+        transition: all 0.6s ease;
+
+        svg {
+            position: relative;
+            top: unset;
+            left: unset;
+            transform: none;
+            margin-right: 1.5rem;
+            width: 30px;
+            height: 30px;
+            fill: $white;
+            transition: all 0.6s ease;
+        }
+
+        &:hover {
+            box-shadow: 0px 16px 48px 0px rgba(4, 14, 53, 0.24);
+            background-color: $white;
+            border: 1px solid $orange;
+            color: $orange;
+
+            svg {
+                fill: $orange;
+            }
+        }
+
+        @include sm {
+            bottom: calc(0px - 32px);
+        }
+
+        @include md {
+            right: 2rem;
+            transform: none;
+        }
+
+        @include lg {
+            bottom: calc(0px - 60px);
+        }
+    }
+}

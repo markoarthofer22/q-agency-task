@@ -1,0 +1,96 @@
+@import "../../css/variables.scss";
+
+.header {
+    position: relative;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5rem;
+    z-index: 10;
+    width: 100%;
+    background-color: #000;
+
+    @include md {
+        justify-content: flex-start;
+    }
+
+    .logo {
+        max-width: 135px;
+        height: auto;
+        width: 100%;
+    }
+}
+
+//header navigation bar
+
+.navigation-bar {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--list {
+        list-style-type: none;
+        margin: 0;
+        max-width: 110rem;
+        width: 100%;
+        display: flex;
+        padding: 0;
+        align-items: center;
+        justify-content: space-evenly;
+
+        @include md {
+            padding: 0 5rem;
+        }
+
+        &-item {
+            position: relative;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #333;
+            padding: 2rem 0;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease-in-out;
+
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                border-radius: 10px;
+                height: 2px;
+                width: 0;
+                background-color: transparent;
+                transition: all 0.4s ease-in-out;
+            }
+
+            &.active {
+                span.name {
+                    color: $darker-blue;
+                    font-weight: 700;
+                }
+
+                &::before {
+                    background-color: $darker-blue;
+                    width: 100%;
+                }
+            }
+
+            &.completed {
+                span.name {
+                    color: #000;
+                    font-weight: 700;
+                }
+                &::before {
+                    background-color: $darker-blue;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

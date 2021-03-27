@@ -1,14 +1,27 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
+// components
 import { CSSTransition } from "react-transition-group";
-import "./loader.scss";
-import { selectIsLoading } from "../../redux/globals/globals.selectors";
+
+// styles
+import "./styles.scss";
+
+// context
+// import { AppContext } from "../../context/AppContext";
+import { Context, ContextApp } from "../../contextStore/context";
 
 const GlobalLoader = () => {
-    const isLoading = useSelector(selectIsLoading);
+    const { appState } = useContext(ContextApp);
+    const { globalState } = useContext(Context);
+
+    const [componentName] = useState("GlobalLoader");
+
+    useEffect(() => {
+        console.log(`${appState.propsMessage} ${componentName}`);
+    }, []);
 
     return (
-        <CSSTransition in={isLoading} timeout={400} classNames="loader" unmountOnExit>
+        <CSSTransition in={globalState.isLoading} timeout={300} classNames="loader" unmountOnExit>
             <div className="main-loader-container">
                 <div className="loader"></div>
             </div>

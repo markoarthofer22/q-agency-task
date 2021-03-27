@@ -1,51 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Helmet from "react-helmet";
-//redux
-
-import { useDispatch, useSelector } from "react-redux";
-import { setIsLoading, setAllPosts } from "../../redux/globals/globals.actions";
-import { selectIsLoading, getAllPosts } from "../../redux/globals/globals.selectors";
 
 //styles
 import "./styles.scss";
 
 // components
 import HeroBox from "../../components/hero-box/hero-box.component";
+import BlogsList from "../../layouts/BlogsList/BlogsList.layout";
 
 //assets
 import headerBg from "../../assets/img/index_background.png";
 
-// hooks
-import useIsBreakpoint from "../../components/hooks/useIsBreakpoint.hook";
+// Context
 import axios from "axios";
+import { Context, ContextApp } from "../../contextStore/context";
+import { setIsLoading, setAllPosts } from "../../contextStore/globals/globalState.actions";
 
 const IndexPage = (props) => {
     const {} = props;
-    const [componentName, setComponentName] = useState("Home");
-    const dispatch = useDispatch();
+    const [componentName] = useState("Home");
 
-    // selectors
-    const allPosts = useSelector(getAllPosts);
-    const isLoading = useSelector(selectIsLoading);
+    // global state
+    const { globalState, globalDispatch } = useContext(Context);
+    const { appState } = useContext(ContextApp);
 
     useEffect(() => {
-        console.log("isLoading se promijenio => ", isLoading);
-    }, [isLoading]);
+        console.log(`${appState.propsMessage} ${componentName}`);
+    }, []);
 
     useEffect(() => {
         axios
             .get("https://my-json-server.typicode.com/markoarthofer22/q-agency-db/posts")
             .then((response) => {
-                dispatch(setAllPosts(response.data));
+                globalDispatch(setAllPosts(response.data));
             })
             .finally(() => {
-                dispatch(setIsLoading(false));
+                globalDispatch(setIsLoading(false));
             });
     }, []);
-
-    useEffect(() => {
-        console.log("allPosts :>> ", allPosts);
-    }, [allPosts]);
 
     return (
         <>
@@ -63,15 +55,17 @@ const IndexPage = (props) => {
                     subtitle="Stay up to date on industry news and the best of chain management."
                 />
 
-                <section className="latest-blogs">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12">
-                                <h2>Blogovi</h2>
+                {globalState?.allPosts?.length > 0 && (
+                    <section className="latest-blogs">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-12">
+                                    <BlogsList data={globalState.allPosts} limit={3} showMore />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                )}
             </section>
         </>
     );

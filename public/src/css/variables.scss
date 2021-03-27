@@ -1,0 +1,86 @@
+// All variables for project (colors, fonts, font-sizes ect.)
+
+//font setup
+$h-font: "Nunito";
+$title-font: "Caveat";
+$font: "Nunito";
+$font-size-main: 10px;
+$mainColor: #000;
+
+//predefined colors
+// $font-blue: #365c97;
+$font-blue: #0033FF;
+$font-red: #d01d29;
+$background: #fff;
+$black: #000;
+$green: #19a796;
+$blue: #2194cf;
+$pink: #e1004f;
+$purple: #cc6dff;
+$red: #df3231;
+$warning-red: #d71920;
+$yellow: #f6d623;
+$white: #fff;
+$light-grey: #f5f0f0;
+$dark-grey: #828282;
+$brown: #42210b;
+$orange: #fd8e35;
+$neo-blue: #00d0ff;
+$dark-blue: #0072aa;
+$darker-blue: #0033FF;
+$nightgray: #333;
+
+//MEDIA QUERIES
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+//main titles
+@font-face {
+    font-family: nettv-icons;
+    // prod${process.env.PUBLIC_URL}
+    // src: url(/shop/fonts/nettv-icons.ttf) format("truetype");
+    src: url(#{$env}/fonts/nettv-icons.ttf) format("truetype");
+}
+
+@mixin sm {
+    @media (min-width: #{$screen-sm-min}) {
+        @content;
+    }
+}
+
+// Medium devices
+@mixin md {
+    @media (min-width: #{$screen-md-min}) {
+        @content;
+    }
+}
+
+// Large devices
+@mixin lg {
+    @media (min-width: #{$screen-lg-min}) {
+        @content;
+    }
+}
+
+// Extra large devices
+@mixin xl {
+    @media (min-width: #{$screen-xl-min}) {
+        @content;
+    }
+}
+
+// Custom devices
+@mixin rwd($screen) {
+    @media (min-width: $screen+"px") {
+        @content;
+    }
+}

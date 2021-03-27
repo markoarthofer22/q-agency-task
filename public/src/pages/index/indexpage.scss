@@ -1,0 +1,81 @@
+@import "../../css/variables.scss";
+
+.index-page {
+    .container.fluid {
+        display: flex;
+        padding: 0 15px !important;
+        flex-direction: column;
+        padding: 0;
+
+        @include lg {
+            padding: 0 !important;
+            flex-direction: row;
+        }
+
+        & > .form-holder {
+            flex-basis: 80%;
+            display: flex;
+            justify-content: flex-end;
+
+            @include lg {
+                padding: 0 5rem 0 10rem;
+            }
+
+            @include rwd(1600) {
+                padding: 0 10rem 0 22rem;
+            }
+
+            .form-holder--steps {
+                width: 100%;
+                // -webkit-perspective: 1000;
+                // -webkit-backface-visibility: hidden;
+            }
+
+            &.homepage {
+                flex-basis: 100%;
+                padding: initial;
+                width: 100%;
+
+                .form-holder--steps {
+                    max-width: 100%;
+                    width: 100%;
+                }
+            }
+
+            &.full-width {
+                flex-basis: 100%;
+            }
+        }
+
+        & > .side-panel-holder {
+            flex-basis: 40%;
+        }
+    }
+}
+
+.change-page-enter {
+    opacity: 0;
+    transform: scale(1);
+
+    .window {
+        animation: ScaleIn 0.4s;
+    }
+}
+.change-page-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.4s, transform 0.4s;
+}
+
+.change-page-exit {
+    opacity: 1;
+
+    .window {
+        animation: ScaleIn 0.4s reverse;
+    }
+}
+.change-page-exit-active {
+    opacity: 0;
+    //transform: scale(0.9);
+    transition: opacity 0.4s, transform 0.4s;
+}

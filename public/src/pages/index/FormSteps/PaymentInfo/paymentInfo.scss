@@ -1,0 +1,356 @@
+@import "../../../../css/variables.scss";
+
+.payment-info {
+    margin: 4rem 0;
+
+    .main-content {
+        &--form {
+            .group-title-holder {
+                h2.title {
+                    font-weight: 300;
+                    line-height: 1.5;
+                    color: #333;
+                    margin-bottom: 3rem;
+                    margin-top: 3rem;
+                    font-size: 2.4rem;
+                }
+
+                p {
+                    color: #333;
+                    font-size: 1.4rem;
+                    margin: -2rem 0 3rem;
+                    font-weight: 500;
+                }
+            }
+
+            .form-notice-text {
+                font-size: 1.2rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #999;
+                display: block;
+
+                @include lg {
+                    margin-top: 2rem;
+                }
+            }
+
+            button.promo-code-button {
+                position: relative;
+                font-size: 1.4rem;
+                font-weight: 500;
+                color: #f14d4d;
+                line-height: normal;
+                padding: 10px 50px;
+                height: auto;
+                border-radius: 3px;
+                border: 1px solid #f14d4d;
+                box-shadow: inset 2px 1000px 1px #fff;
+                transition: 0.4s all ease-in;
+                z-index: 2;
+
+                &:hover {
+                    color: $white;
+
+                    &::before {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    z-index: -1;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    background-image: linear-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0)), linear-gradient(101deg, #f14d4d, #ec5575);
+                    background-origin: border-box;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.4s ease-in;
+                }
+
+                &.blue {
+                    color: $darker-blue;
+                    border-color: $darker-blue;
+
+                    &:hover {
+                        color: $white;
+                    }
+
+                    &::before {
+                        // background-image: linear-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0)), linear-gradient(101deg, $dark-blue, $blue);
+                        background-image: none;
+                        background-color: $darker-blue;
+                    }
+                }
+            }
+        }
+
+        &--terms-of-use {
+            margin-top: 3rem;
+        }
+
+        &--payment-options {
+            .options {
+                border: 1px solid #ccc;
+                padding: 0 2rem;
+                min-height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                cursor: pointer;
+
+                &.cards {
+                    margin-bottom: 40px;
+                }
+
+                &.bank-payment .payment-description {
+                    &.mob {
+                        width: 100%;
+                        margin-top: 1.5rem;
+                    }
+
+                    padding-left: 25px;
+                    p {
+                        margin: 1.2rem 0;
+                        color: #333;
+                        font-size: 1.4rem;
+                        line-height: 1.6;
+                    }
+
+                    a {
+                        color: $darker-blue;
+                    }
+
+                    strong {
+                        color: $darker-blue;
+                    }
+
+                    &.error {
+                        h4 {
+                            color: $darker-blue;
+                            font-size: 1.8rem;
+                            font-weight: 500;
+                            margin-bottom: 10px;
+                            margin-top: 25px;
+                        }
+
+                        p {
+                            margin: 0;
+                        }
+                    }
+                }
+
+                &.bank-payment.has-content {
+                    flex-direction: column;
+                    padding: 20px;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+
+                &.bank-payment.disabled {
+                    opacity: 0.7;
+                    pointer-events: none;
+                }
+
+                .text-holder {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                }
+
+                .checkbox {
+                    position: relative;
+                    z-index: 2;
+                    border: 1px solid $darker-blue;
+                    border-radius: 100%;
+                    width: 15px;
+                    height: 15px;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.4s ease-in;
+                    margin-right: 10px;
+
+                    @include lg {
+                        width: 15px;
+                        height: 15px;
+                    }
+
+                    &.active {
+                        .filled {
+                            background-color: $darker-blue;
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                    }
+
+                    .filled {
+                        width: calc(100% - 6px);
+                        height: calc(100% - 6px);
+                        background-color: transparent;
+                        opacity: 0;
+                        visibility: hidden;
+                        border-radius: 100%;
+                        display: block;
+                        transition: all 0.4s ease-in;
+                    }
+                }
+
+                .name {
+                    font-weight: 700;
+                    color: #666;
+                    font-size: 1.2rem;
+
+                    @include lg {
+                        font-size: 1.6rem;
+                    }
+                }
+
+                .cards-holder {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+
+                    img {
+                        max-width: 40px;
+                        max-height: 100%;
+
+                        &:first-of-type {
+                            margin-right: 15px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &--actions-box {
+            width: 100%;
+            margin: 4rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .button-back {
+                display: flex;
+                align-self: center;
+                padding-left: 0;
+
+                &:hover {
+                    .button-name {
+                        color: $dark-blue;
+                    }
+                    svg {
+                        fill: $dark-blue;
+                    }
+                }
+
+                .button-name {
+                    display: block;
+                    color: $darker-blue;
+                    font-weight: 400;
+                    font-size: 1.6rem;
+                    transition: all 0.4s;
+                }
+
+                svg {
+                    width: 18px;
+                    height: 18px;
+                    fill: $darker-blue;
+                    margin-right: 5px;
+                    transition: all 0.4s;
+                }
+            }
+        }
+    }
+}
+
+.credit-card-select {
+    position: relative;
+
+    &--selected {
+        span {
+            font-weight: 700;
+            color: #666;
+            font-size: 1.2rem;
+
+            @include lg {
+                font-size: 1.6rem;
+            }
+        }
+    }
+
+    &--dropdown {
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $white;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        padding: 20px 20px;
+        transition: all 0.4s ease;
+        z-index: 100;
+        min-width: 250px;
+
+        &::before {
+            content: "";
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid #666;
+            position: absolute;
+            top: calc(0px - 6px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        ul {
+            text-align: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            font-weight: 700;
+            color: #666;
+            font-size: 1.3rem;
+            margin: 10px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba($black, 0.2);
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+
+            &:hover {
+                color: $darker-blue;
+                border-bottom: 1px solid rgba($darker-blue, 0.2);
+            }
+
+            &:first-of-type {
+                margin-top: 0;
+                padding-top: 0;
+            }
+
+            &:last-of-type {
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+        }
+
+        &.opened {
+            visibility: visible;
+            opacity: 1;
+            top: calc(100% + 10px);
+        }
+    }
+}

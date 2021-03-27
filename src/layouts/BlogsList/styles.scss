@@ -1,0 +1,37 @@
+@import "../../css/variables.scss";
+
+.latest-blogs {
+    position: relative;
+    z-index: 1000;
+
+    &--holder {
+        position: absolute;
+        top: -120px;
+        padding-bottom: 4rem;
+
+        &.all-blogs {
+            padding: 4rem 0;
+            position: static;
+            top: unset;
+        }
+    }
+
+    &--cta {
+        font-family: $font;
+        font-size: 1.8rem;
+        color: $white;
+        padding: 15px 30px;
+        border-radius: 10px;
+        background-color: $orange;
+        border: 1px solid transparent;
+        height: auto;
+        margin-top: 20px;
+        box-shadow: 8px 8px 20px 0px transparent;
+        transition: all 0.6s ease;
+
+        &:hover {
+            background-color: $dark-blue;
+            box-shadow: 8px 8px 20px 0px rgba($black, 0.2);
+        }
+    }
+}

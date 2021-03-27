@@ -1,0 +1,65 @@
+@import "../../css/variables.scss";
+
+.no-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    flex: 1;
+
+    &--holder {
+        text-align: center;
+    }
+
+    &--title {
+        color: #333;
+        font-size: 3.6rem;
+        margin-bottom: 3rem;
+        font-weight: 400;
+        margin-top: 0;
+    }
+
+    &--subtitle {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        color: #666;
+        margin-bottom: 4rem;
+        font-weight: 400;
+    }
+
+    &--button {
+        border: none;
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 500;
+        background-color: $darker-blue;
+        padding: 13px 45px;
+        border-radius: 3px;
+        width: 100%;
+        max-width: 280px;
+        display: block;
+        margin: 0 auto;
+        cursor: pointer;
+        transition: 0.4s ease;
+        position: relative;
+
+        &::before {
+            content: "";
+            background-color: rgba(#333, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        &:hover::before {
+            width: 100%;
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}

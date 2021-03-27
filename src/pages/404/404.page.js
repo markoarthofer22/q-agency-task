@@ -1,34 +1,74 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import Header from '../../components/header/header.component';
-import Navigation from '../../components/navigation/navigation.component';
-import Container from '../../components/layout/container.component';
-import './404.scss';
+import React, { useState, useEffect, useContext } from "react";
+import Helmet from "react-helmet";
+import { NavLink } from "react-router-dom";
+//styles
+import "./styles.scss";
 
-const NoPage = (props) => {
+//assets
+import bgImage from "../../assets/img/blog-bg.png";
+import emoji from "../../assets/img/emoji.png";
+
+// components
+import Button from "../../components/buttons/button.component";
+
+// context
+import { Context, ContextApp } from "../../contextStore/context";
+import { setIsLoading } from "../../contextStore/globals/globalState.actions";
+
+const NoPage = () => {
+    const [componentName] = useState("PageNotFound");
+
+    // globalState
+    const { globalDispatch } = useContext(Context);
+    const { appState } = useContext(ContextApp);
+
+    useEffect(() => {
+        globalDispatch(setIsLoading(false));
+    }, []);
+
+    useEffect(() => {
+        console.log(`${appState.propsMessage} ${componentName}`);
+    }, []);
+
     return (
         <>
             <Helmet>
-                <title>404 | AdventZagreb</title>
-                <meta type="description" content="404 Page" />
-                {/*OG META */}
-                <meta property="og:title" content="404 Page" />
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content={`https://www.adventzagreb.hr`} />
-                <meta property="og:image" content={`https://www.adventzagreb.hr/documents/advent-zagreb-default-og-image.jpg`} />
-                <meta property="og:description" content="Missing page (404)" />
-                <meta name="description" content="Missing page (404)" />
+                <meta name="geo.region" content="RS-01" />
+                <meta name="geo.placename" content="" />
+                <meta name="geo.position" content="45.60000;19.20000" />
+                <meta name="ICBM" content="45.60000;19.20000" />
+                <title>Q Agency | {componentName}</title>
             </Helmet>
 
-            <section className="no-page">
-                <Container>
-                    <div className="four-o-four">
+            <section
+                className="no-page"
+                style={{
+                    backgroundImage: "url('" + bgImage + "')"
+                }}
+            >
+                <div className="no-page-content">
+                    <div className="notfound-404">
                         <h2>
-                            404 <span>Oooops, we broke something.</span>
+                            4
+                            <span
+                                style={{
+                                    backgroundImage: "url('" + emoji + "')"
+                                }}
+                            ></span>
+                            4
                         </h2>
-                        <p>The page you are looking for doesn't exist.</p>
                     </div>
-                </Container>
+                    <h3>
+                        <span>Oops!</span> We broke <span>something</span>...
+                    </h3>
+                    <p>
+                        Sorry but the page you are looking for doesn't exist, it has been removed or <br /> it is temporarily unavailable
+                    </p>
+
+                    <NavLink to="/">
+                        <Button title="Back to homepage" customClass="no-page--cta" />
+                    </NavLink>
+                </div>
             </section>
         </>
     );

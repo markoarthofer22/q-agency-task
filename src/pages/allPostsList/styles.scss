@@ -1,4 +1,27 @@
 @import "../../css/variables.scss";
 
-section.all-blogs-section {
+.all-blogs-section {
+    .add-new-popup {
+        & > .window {
+            padding: 5rem 0 4rem;
+            max-width: calc(100% - 80px);
+            width: 100%;
+
+            @include md {
+                max-width: 700px;
+            }
+        }
+
+        &--title {
+            font-family: $font;
+            font-size: 2.4rem;
+            color: $orange;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 0;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+        }
+    }
 }

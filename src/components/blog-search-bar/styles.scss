@@ -1,0 +1,165 @@
+@import "../../css/variables.scss";
+
+.blog-search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 20px;
+    border-radius: 5px;
+    background-color: $orange;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    flex-direction: column;
+
+    @include md {
+        flex-direction: row;
+        padding: 2px 20px 2px 2px;
+        margin-bottom: 2rem;
+        margin-top: 4rem;
+    }
+
+    &--input-holder {
+        position: relative;
+        width: 100%;
+        padding: 15px;
+
+        @include md {
+            max-width: 450px;
+        }
+
+        & > form {
+            height: 100%;
+        }
+
+        svg {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-60%);
+            width: 30px;
+            height: 30px;
+            fill: $orange;
+        }
+
+        input {
+            position: relative;
+            border-radius: 5px;
+            min-height: 60px;
+            height: 100%;
+            padding-right: 55px;
+
+            &.invalid {
+                border: 2px solid $warning-red;
+
+                @include md {
+                    border: 2px solid $orange;
+                }
+
+                & ~ span:before {
+                    color: $white;
+                    font-weight: 700;
+                    font-family: $title-font;
+                    top: calc(100% - 14px);
+                    @include md {
+                        top: calc(100% - 0px);
+                        color: $orange;
+                    }
+                }
+            }
+
+            & + label {
+                transition: all 0.4s ease;
+                transform-origin: 0 0;
+            }
+
+            &:focus {
+                & + label {
+                    top: 0;
+                    left: 5px;
+                    transform: translateY(calc(-100% - 1px));
+                    color: $black;
+
+                    @include md {
+                        color: $orange;
+                    }
+                }
+            }
+
+            &:valid {
+                & + label {
+                    top: 0;
+                    left: 5px;
+                    color: $black;
+                    transform: translateY(calc(-100% - 1px));
+
+                    @include md {
+                        color: $orange;
+                    }
+                }
+            }
+        }
+
+        label {
+            position: absolute;
+            top: 50%;
+            left: 25px;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            line-height: 1.6rem;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-family: $font;
+
+            @include sm {
+                font-size: 1.6rem;
+                line-height: 2.1rem;
+            }
+        }
+    }
+
+    &--cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.6s ease;
+        position: relative;
+        cursor: pointer;
+        margin: 1rem 0;
+
+        @include md {
+            margin: 0;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: $white;
+            width: 0;
+            transition: all 0.6s ease;
+        }
+
+        &:hover {
+            &::before {
+                width: 100%;
+            }
+        }
+
+        &--text {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: $white;
+            font-family: $font;
+        }
+
+        svg {
+            margin-left: 15px;
+            width: 30px;
+            height: 30px;
+            fill: $white;
+        }
+    }
+}

@@ -1,17 +1,43 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
+// component
 import Tooltip from "../tooltip/tooltip.component";
 import SvgIcon from "../svg-icon/svg-icon.component";
 
-import "./input.scss";
+// styles
+import "./styles.scss";
 
-const InputComponent = ({ onBlur, type, name, inputClass, required, errorMessage, register, labelText, onEveryChange, inputValue, tooltip, disabled, showPasswordIcon, showIcon, ref }) => {
+// context
+import { ContextApp } from "../../contextStore/context";
+
+const InputComponent = ({
+    type,
+    name,
+    inputClass,
+    required,
+    errorMessage,
+    register,
+    labelText,
+    onEveryChange,
+    inputValue,
+    tooltip,
+    disabled,
+    showPasswordIcon,
+    showIcon
+}) => {
     const [showPassword, setShowPassword] = useState(false);
+
+    // state
+    const [componentName] = useState("InputComponent");
+    const { appState } = useContext(ContextApp);
+
+    useEffect(() => {
+        console.log(`${appState.propsMessage} ${componentName}`);
+    }, []);
+
     return (
         <>
-            <label htmlFor={name ? name : null} className={`floating-label ${tooltip ? "flexed" : ""}`}>
-                {labelText} {tooltip && <Tooltip title={tooltip} styles="custom-tooltip" />}
-            </label>
             <input
                 type={showPassword ? "text" : type ? type : "text"}
                 disabled={disabled}
@@ -23,14 +49,12 @@ const InputComponent = ({ onBlur, type, name, inputClass, required, errorMessage
                 value={inputValue && inputValue.toString()}
                 ref={register ? register({ ...required }) : null}
                 onChange={(e) => (onEveryChange ? onEveryChange(e) : null)}
-                onBlur={(e) => (onBlur ? onBlur(e) : null)}
             />
+            <label htmlFor={name ? name : null} className={`floating-label ${tooltip ? "flexed" : ""}`}>
+                {labelText} {tooltip && <Tooltip title={tooltip} styles="custom-tooltip" />}
+            </label>
 
-            {showIcon && (
-                <span onClick={(e) => setShowPassword(!showPassword)}>
-                    <SvgIcon icon={showIcon} />
-                </span>
-            )}
+            {showIcon && <SvgIcon icon={showIcon} />}
 
             {showPasswordIcon && (
                 <span onClick={(e) => setShowPassword(!showPassword)}>
@@ -54,6 +78,22 @@ const InputComponent = ({ onBlur, type, name, inputClass, required, errorMessage
             {errorMessage && <span name={name ? name : null} error={errorMessage && errorMessage.message} />}
         </>
     );
+};
+
+InputComponent.propTypes = {
+    type: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    inputClass: PropTypes.string,
+    required: PropTypes.object.isRequired,
+    errorMessage: PropTypes.object,
+    register: PropTypes.func,
+    labelText: PropTypes.string,
+    onEveryChange: PropTypes.func,
+    inputValue: PropTypes.string,
+    tooltip: PropTypes.string,
+    disabled: PropTypes.bool,
+    showPasswordIcon: PropTypes.bool,
+    showIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };
 
 export default InputComponent;

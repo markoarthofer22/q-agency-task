@@ -265,6 +265,7 @@ strong {
     // background-color: #fff;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 
     .side-content {
         width: auto;
@@ -367,5 +368,92 @@ main.bottom-wrap {
 
     @include xl {
         --size: lg;
+    }
+}
+
+.form--alert-box {
+    &-popup {
+        border-radius: 5px !important;
+        box-shadow: 0px 40px 80px 0px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    &-title {
+        color: $light-blue !important;
+        font-size: 2.2rem !important;
+        font-family: $title-font !important;
+        font-weight: 700 !important;
+    }
+
+    &-content {
+        font-size: 1.6rem !important;
+        font-family: $font !important;
+        color: $dark-blue !important;
+        font-weight: 400 !important;
+    }
+
+    .swal2-timer-progress-bar-container {
+        height: 4px !important;
+        border-radius: 5px !important;
+    }
+
+    .swal2-timer-progress-bar {
+        background-color: $light-blue !important;
+        height: 4px !important ;
+        border-radius: 5px !important;
+    }
+
+    &--error {
+        .form--alert-box {
+            &-title {
+                color: $warning-red !important;
+            }
+
+            &-content {
+                color: $grey !important;
+            }
+        }
+
+        .swal2-timer-progress-bar {
+            background-color: $warning-red !important;
+        }
+    }
+}
+
+.popup-enter {
+    opacity: 0;
+    transform: scale(1);
+
+    .window {
+        animation: ScaleIn 0.4s;
+    }
+}
+.popup-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.4s, transform 0.4s;
+}
+
+.popup-exit {
+    opacity: 1;
+
+    .window {
+        animation: ScaleIn 0.4s reverse;
+    }
+}
+.popup-exit-active {
+    opacity: 0;
+    //transform: scale(0.9);
+    transition: opacity 0.4s, transform 0.4s;
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(0.2);
+    }
+    100% {
+        transform: scale(1);
     }
 }

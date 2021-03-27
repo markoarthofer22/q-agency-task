@@ -60,7 +60,7 @@ const IndexPage = (props) => {
                         <div className="container">
                             <div className="row">
                                 <div className="col-12">
-                                    <BlogsList data={globalState.allPosts} limit={3} showMore />
+                                    <BlogsList data={globalState.allPosts} limit={3} showMore holderClass="list-home" />
                                 </div>
                             </div>
                         </div>

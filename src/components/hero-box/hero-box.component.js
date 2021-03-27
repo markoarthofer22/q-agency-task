@@ -7,7 +7,7 @@ import "./styles.scss";
 import { ContextApp } from "../../contextStore/context";
 
 const HeroBox = (props) => {
-    const { heroClass, bgImage, title, subtitle } = props;
+    const { heroClass, bgImage, title, subtitle, hasOverlay } = props;
     const [componentName] = useState("HeroBox");
     const { appState } = useContext(ContextApp);
 
@@ -25,6 +25,7 @@ const HeroBox = (props) => {
                     }}
                 ></div>
             )}
+            {hasOverlay && <div className="hero-box--helper-img--overlay"></div>}
             {(title || subtitle) && (
                 <div className="container">
                     <div className="row">
@@ -43,7 +44,8 @@ HeroBox.propTypes = {
     heroClass: PropTypes.string,
     bgImage: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string
+    subtitle: PropTypes.string,
+    hasOverlay: PropTypes.bool
 };
 
 export default HeroBox;

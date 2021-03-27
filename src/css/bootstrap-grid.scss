@@ -5,13 +5,22 @@
     justify-content: space-between;
 }
 
+.row.flex-vertical {
+    flex-direction: column;
+}
+
+.mv-4{
+    margin-top: 4rem;
+    margin-bottom: 4rem
+}
+
 // bootstrap
 
 .row.full {
     margin: 0;
 }
 
-.row.full > [class*='col-'] {
+.row.full > [class*="col-"] {
     padding-left: 0;
     padding-right: 0;
 }
@@ -43,7 +52,7 @@
     margin-bottom: -10px;
 }
 
-.grid-5 div[class*='col-'] {
+.grid-5 div[class*="col-"] {
     padding-right: 5px !important;
     padding-left: 5px !important;
     padding-bottom: 10px !important;
@@ -55,7 +64,7 @@
     margin-bottom: -20px;
 }
 
-.grid-10 div[class*='col-'] {
+.grid-10 div[class*="col-"] {
     padding-right: 10px !important;
     padding-left: 10px !important;
     padding-bottom: 20px !important;
@@ -67,7 +76,7 @@
     margin-bottom: -30px;
 }
 
-.grid-15 > div[class*='col-'] {
+.grid-15 > div[class*="col-"] {
     padding-right: 15px !important;
     padding-left: 15px !important;
     padding-bottom: 30px !important;
@@ -79,7 +88,7 @@
     margin-bottom: -40px;
 }
 
-.grid-20 > div[class*='col-'] {
+.grid-20 > div[class*="col-"] {
     padding-right: 20px;
     padding-left: 20px;
     padding-bottom: 40px;
@@ -90,7 +99,7 @@
     margin-bottom: -60px;
 }
 
-.grid-30 > div[class*='col-'] {
+.grid-30 > div[class*="col-"] {
     padding-right: 30px;
     padding-left: 30px;
     padding-bottom: 60px;
@@ -109,7 +118,7 @@
     margin-left: -1px;
 }
 
-.row.gut-1 > [class*='col-'] {
+.row.gut-1 > [class*="col-"] {
     padding-right: 1px;
     padding-left: 1px;
 }
@@ -119,7 +128,7 @@
     margin-left: -5px;
 }
 
-.row.gut-5 > [class*='col-'] {
+.row.gut-5 > [class*="col-"] {
     padding-right: 5px;
     padding-left: 5px;
 }
@@ -129,7 +138,7 @@
     margin-left: -10px;
 }
 
-.row.gut-10 > [class*='col-'] {
+.row.gut-10 > [class*="col-"] {
     padding-right: 10px;
     padding-left: 10px;
 }
@@ -139,7 +148,7 @@
     margin-left: -15px;
 }
 
-.row.gut-15 > [class*='col-'] {
+.row.gut-15 > [class*="col-"] {
     padding-right: 15px;
     padding-left: 15px;
 }
@@ -149,7 +158,7 @@
     margin-left: -25px;
 }
 
-.row.gut-25 > [class*='col-'] {
+.row.gut-25 > [class*="col-"] {
     padding-right: 25px;
     padding-left: 25px;
 }
@@ -159,7 +168,7 @@
     margin-left: -40px;
 }
 
-.row.gut-40 > [class*='col-'] {
+.row.gut-40 > [class*="col-"] {
     padding-right: 40px;
     padding-left: 40px;
 }
@@ -226,7 +235,7 @@
 }
 
 .no-gutters > .col,
-.no-gutters > [class*='col-'] {
+.no-gutters > [class*="col-"] {
     padding-right: 0;
     padding-left: 0;
 }

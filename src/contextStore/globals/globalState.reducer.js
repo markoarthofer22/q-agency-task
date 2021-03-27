@@ -1,4 +1,4 @@
-import { SET_IS_LOADING, SET_GLOBAL_ERROR, SET_ALL_POSTS } from "./globalState.types";
+import { SET_IS_LOADING, SET_GLOBAL_ERROR, SET_ALL_POSTS, SET_POST_COMMENT, SET_CURRENT_POST } from "./globalState.types";
 
 import { useReducer } from "react";
 
@@ -22,6 +22,18 @@ const reducer = (state, action) => {
                 allPosts: [...action.payload]
             };
 
+        case SET_POST_COMMENT:
+            return {
+                ...state,
+                allPosts: [...state.allPosts, ...action.payload]
+            };
+
+        case SET_CURRENT_POST:
+            return {
+                ...state,
+                currentPost: action.payload
+            };
+
         default:
             return state;
     }
@@ -31,7 +43,8 @@ const useGlobalState = () => {
     const [globalState, globalDispatch] = useReducer(reducer, {
         isLoading: true,
         isError: false,
-        allPosts: []
+        allPosts: [],
+        currentPost: null
     });
 
     return { globalState, globalDispatch };

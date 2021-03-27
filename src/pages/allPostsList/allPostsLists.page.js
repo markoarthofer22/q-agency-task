@@ -8,7 +8,7 @@ import "./styles.scss";
 // components
 import HeroBox from "../../components/hero-box/hero-box.component";
 import BlogsList from "../../layouts/BlogsList/BlogsList.layout";
-import BlogSearchBar from "../../components/blog-search-bar/search.component";
+import BlogSearchBar from "../../layouts/BlogSearchBar/search.component";
 import Popup from "../../components/popup/popup.component";
 import AddNewBlogForm from "../../layouts/AddNewBlog/AddNewBlog.layout";
 //assets

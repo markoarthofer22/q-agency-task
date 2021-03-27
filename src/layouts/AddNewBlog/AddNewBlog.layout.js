@@ -71,8 +71,6 @@ const AddNewBlogForm = ({ returnAfterEnd }) => {
 
         let tempArr = [data, ...globalState.allPosts];
 
-        console.log(tempArr);
-
         globalDispatch(setIsLoading(true));
         setIsButtonDisabled(true);
         globalDispatch(setAllPosts(tempArr));

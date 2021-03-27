@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext, useCallback } from "react";
 import { debounce } from "lodash";
 
 //components
-import InputComponent from "../input/input.component";
-import SvgIcon from "../svg-icon/svg-icon.component";
+import InputComponent from "../../components/input/input.component";
+import SvgIcon from "../../components/svg-icon/svg-icon.component";
 
 //hooks
 import { useForm } from "react-hook-form";

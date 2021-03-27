@@ -12,7 +12,7 @@ import "./styles.scss";
 import { ContextApp } from "../../contextStore/context";
 
 const BlogsList = (props) => {
-    const { data, limit, showMore, holderClass, postError } = props;
+    const { data, limit, showMore, holderClass, postError, isVertical } = props;
     const { appState } = useContext(ContextApp);
     const [componentName] = useState("BlogsListList");
     const [limitedDataArray, setLimitedDataArray] = useState([]);
@@ -36,9 +36,9 @@ const BlogsList = (props) => {
                     <h3 className="latest-blogs--error-text">{postError ? postError : "Error occured!"}</h3>
                 ) : (
                     <>
-                        <div className="row grid-20">
+                        <div className={`row grid-20 ${isVertical ? "flex-vertical" : ""}`}>
                             {limitedDataArray?.map((item, index) => (
-                                <div key={index} className="col-12 col-sm-6 col-md-4">
+                                <div key={index} className={`${isVertical ? "col-12" : " col-12 col-sm-6 col-md-4"}`}>
                                     <Link to={`/posts/${item.id}`}>
                                         <BlogCard content={item.content} title={item.title} user={item.author} date={item.date} background={item.img} />
                                     </Link>
@@ -64,6 +64,7 @@ const BlogsList = (props) => {
 BlogsList.propTypes = {
     data: PropTypes.array.isRequired,
     limit: PropTypes.number,
+    isVertical: PropTypes.bool,
     showMore: PropTypes.bool,
     holderClass: PropTypes.string,
     postError: PropTypes.node

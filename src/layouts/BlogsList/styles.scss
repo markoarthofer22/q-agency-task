@@ -5,14 +5,17 @@
     z-index: 1000;
 
     &--holder {
-        position: absolute;
-        top: -120px;
         padding-bottom: 4rem;
+
+        &.list-home{
+            position: absolute;
+            top: -120px;
+        }
+
 
         &.all-blogs {
             padding: 4rem 0;
-            position: static;
-            top: unset;
+          
         }
     }
 

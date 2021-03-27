@@ -2,6 +2,7 @@ import App from "../App";
 import PageNotFound from "../pages/404/404.page";
 import BlogListPage from "../pages/allPostsList/allPostsLists.page";
 import IndexPage from "../pages/index/index.page";
+import BlogSingleDetails from "../pages/PostDetails/postDetails.page";
 
 export default [
     {
@@ -17,6 +18,11 @@ export default [
                 path: "/posts",
                 exact: true,
                 component: BlogListPage
+            },
+            {
+                path: "/posts/:id",
+                exact: true,
+                component: BlogSingleDetails
             },
             {
                 path: "*",

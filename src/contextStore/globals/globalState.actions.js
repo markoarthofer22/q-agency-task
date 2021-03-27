@@ -1,4 +1,4 @@
-import { SET_IS_LOADING, SET_GLOBAL_ERROR, SET_ALL_POSTS } from "./globalState.types";
+import { SET_IS_LOADING, SET_GLOBAL_ERROR, SET_ALL_POSTS, SET_POST_COMMENT, SET_CURRENT_POST } from "./globalState.types";
 
 export const setIsLoading = (isLoading) => {
     return {
@@ -18,6 +18,20 @@ export const setAllPosts = (_posts) => {
     return {
         type: SET_ALL_POSTS,
         payload: _posts
+    };
+};
+
+export const setPostComments = (_singlePost) => {
+    return {
+        type: SET_POST_COMMENT,
+        payload: _singlePost
+    };
+};
+
+export const setCurrentPost = (_singlePost) => {
+    return {
+        type: SET_CURRENT_POST,
+        payload: _singlePost
     };
 };
 

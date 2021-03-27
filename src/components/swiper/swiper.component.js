@@ -38,7 +38,7 @@ const CustomSwiper = (props) => {
 
 CustomSwiper.propTypes = {
     params: PropTypes.object,
-    children: PropTypes.element.isRequired,
+    children: PropTypes.node.isRequired,
     wrapClass: PropTypes.string,
     containerClass: PropTypes.string,
     wrapper: PropTypes.string,

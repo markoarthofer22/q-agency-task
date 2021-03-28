@@ -65,7 +65,7 @@ First, to discuss structure and typing in app.
     ```sh
     npm install
     ```
-3. Optional => disable elint by adding to `.env`
+3. Optional => disable eslint by adding to `.env`
     ```JS
     EXTEND_ESLINT=true
     DISABLE_ESLINT_PLUGIN=true

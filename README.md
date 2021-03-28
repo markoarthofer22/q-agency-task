@@ -1,78 +1,123 @@
-# Getting Started with Create React App
+<br />
+<p align="center">
+  <h3 align="center">Q Agency Work Task</h3>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <p align="center">
+    Blog style app for DEMO purposes :smile:
+    <br />
+    <a href="https://github.com/markoarthofer22/q-agency-task"><strong>Explore the docs »</strong></a>
+    <br />
+  </p>
+</p>
 
-## Available Scripts
+<!-- ABOUT THE PROJECT -->
 
-In the project directory, you can run:
+## About The Project
 
-### `npm start`
+React app made for demo purposes. Blog style app that consists of 3 pages/routes. Focused on state managment using ContextAPI. Node.js & npm are required.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Basic structure:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+-   Modified [create-react-app](https://create-react-app.dev/)
+-   State managed with ContextAPI (Redux/Thunk with Reselect is also included and wrapped, so you can use that)
+-   Function based React, knowledge of Hooks is required
+-   Grid system based on Bootstrap framework
+-   Normalize copied from Bootstrap
+-   Custom src structure
+-   Prop-types for typing
+-   All components made from scratch
+-   CamelCase convention
+-   [LoremPicsum](https://picsum.photos/) API used for Blog images
+-   [my-json-server](https://my-json-server.typicode.com/markoarthofer22/q-agency-db) for storing default data (in free ver. it doesn't support saves beetween
+    API calls)
 
-### `npm test`
+### Built With
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   [ReactJS](https://reactjs.org/)
+-   [Bootstrap](https://getbootstrap.com)
 
-### `npm run build`
+<!-- GETTING STARTED -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+First, to discuss structure and typing in app.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-   files are sorted per usage. (alphabetically)
+    -   /assets => imported assets that get compiled (backgrounds ect.)
+    -   /components => reusable componets, can be shared on other projects :smile:
+    -   /contextStore => ContextAPI store, contains globals and app folder, for state managment (used in this project)
+    -   /css => global styles (app.scss, libs, grid), variables.scss (all vars are defined and shared in it)
+    -   /layouts => grouped components that make a whole. Can be reused together (example SingleBlogCard)
+    -   /pages => main pages for router
+    -   /redux => store for state managment based on Redux/Thunk/Reselect, wrapped around App.js (usable)
+    -   /routes => routes.js file, plain js object that contains routes (I like to keep it seperated :smile: )
+-   .scss is used per component. every component/page/layout has its own styles.scss
+-   App.js => first component rendered, used as wrapper for Context (Providers) and for GlobalLoader
+-   Index.js => main components, used as wrapper for Redux store
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Clone the repo
+    ```sh
+    git clone https://github.com/your_username_/Project-Name.git
+    ```
+2. Install NPM packages
+    ```sh
+    npm install
+    ```
+3. Optional => disable elint by adding to `.env`
+    ```JS
+    EXTEND_ESLINT=true
+    DISABLE_ESLINT_PLUGIN=true
+    ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from
-your project.
+<!-- USAGE EXAMPLES -->
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control
-over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your
-own.
+## Usage
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature.
-However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Because it is created with [create-react-app](https://create-react-app.dev/) starting is very simple. Use
 
-## Learn More
+```sh
+  npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+for local develpoment and
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+  npm run build
+```
 
-### Code Splitting
+for production build. Optionally use
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```sh
+  npm run eject
+```
 
-### Analyzing the Bundle Size
+if you need to heavily modify webpack
 
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+_For more examples, please refer to the [Documentation](https://create-react-app.dev/docs/available-scripts/)_
 
-### Making a Progressive Web App
+<!-- LICENSE -->
 
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## License
 
-### Advanced Configuration
+Distributed under the MIT License. See `LICENSE` for more information.
 
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<!-- CONTACT -->
 
-### Deployment
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Marko Arthofer - [GIT](https://github.com/markoarthofer22)
 
-### `npm run build` fails to minify
+Project Link: [https://github.com/markoarthofer22/q-agency-task](https://github.com/markoarthofer22/q-agency-task)
 
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- ACKNOWLEDGEMENTS -->
+
+## Acknowledgements
+
+-   [axios](https://www.webpagefx.com/tools/emoji-cheat-sheet)
+-   [swiperJS](https://swiperjs.com/)
+-   [lodash](https://lodash.com/)
+-   [react-helmet](https://github.com/nfl/react-helmet)
+-   [redux](https://redux.js.org/)
+-   [sweetalert2](https://sweetalert2.github.io/)

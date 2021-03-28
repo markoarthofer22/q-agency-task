@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 
 // styles
-import "./popup.scss";
+import "./styles.scss";
 
 // components
 import SvgIcon from "../svg-icon/svg-icon.component";

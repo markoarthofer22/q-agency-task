@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
+
 // components
 import SvgIcon from "../svg-icon/svg-icon.component";
 
 // styles
-import "./tooltip.scss";
+import "./styles.scss";
+
+// context
+import { ContextApp } from "../../contextStore/context";
 
 const Tooltip = (props) => {
     const { styles, title, icon } = props;
+
+    // state
+    const { appState } = useContext(ContextApp);
+    const [componentName] = useState("Tooltip");
+
+    useEffect(() => {
+        console.log(`${appState.propsMessage} ${componentName}`);
+    }, []);
 
     return (
         <span className={`${styles ? styles : ""} tooltip`} tooltiptitle={title ? title : "Not defined"}>

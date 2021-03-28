@@ -20,7 +20,7 @@ import { setIsLoading, setAllPosts, setCurrentPost } from "../../contextStore/gl
 
 const GallerySwiper = ({ data }) => {
     const { appState } = useContext(ContextApp);
-    const [componentName] = useState("CustomSwiper");
+    const [componentName] = useState("GallerySwiperInstance");
 
     useEffect(() => {
         console.log(`${appState.propsMessage} ${componentName}`);

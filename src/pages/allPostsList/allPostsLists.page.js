@@ -32,6 +32,7 @@ const BlogList = () => {
     const returnValueForBlogs = (_searchText) => {
         if (_searchText.length === 0) {
             setFilteredBlogs([]);
+            setFilteredBlogsError(null);
             return;
         }
 
@@ -39,7 +40,6 @@ const BlogList = () => {
             globalDispatch(setIsLoading(true));
 
             // find posts by author name
-            console.log(_searchText);
             let res = globalState.allPosts.filter((item) => new RegExp(_searchText, "i").test(item.author));
 
             if (res.length > 0) {

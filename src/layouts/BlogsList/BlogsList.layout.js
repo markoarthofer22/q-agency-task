@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -8,13 +8,11 @@ import Button from "../../components/buttons/button.component";
 // styles
 import "./styles.scss";
 
-// context
-import { ContextApp } from "../../contextStore/context";
+// hoc
+import clgComponentName from "../../components/hoc/consoleComponentName";
 
 const BlogsList = (props) => {
     const { data, limit, showMore, holderClass, postError, isVertical } = props;
-    const { appState } = useContext(ContextApp);
-    const [componentName] = useState("BlogsListList");
     const [limitedDataArray, setLimitedDataArray] = useState([]);
 
     useEffect(() => {
@@ -24,10 +22,6 @@ const BlogsList = (props) => {
             setLimitedDataArray(data);
         }
     }, [limit, data]);
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
 
     return (
         <div className={`latest-blogs--holder ${holderClass && holderClass}`}>
@@ -70,4 +64,4 @@ BlogsList.propTypes = {
     postError: PropTypes.node
 };
 
-export default BlogsList;
+export default clgComponentName(BlogsList, "BlogsList");

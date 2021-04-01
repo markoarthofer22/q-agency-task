@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import Helmet from "react-helmet";
 import { NavLink } from "react-router-dom";
 //styles
@@ -12,22 +12,18 @@ import emoji from "../../assets/img/emoji.png";
 import Button from "../../components/buttons/button.component";
 
 // context
-import { Context, ContextApp } from "../../contextStore/context";
+import { Context } from "../../contextStore/context";
 import { setIsLoading } from "../../contextStore/globals/globalState.actions";
 
-const NoPage = () => {
-    const [componentName] = useState("PageNotFound");
+// hoc
+import clgComponentName from "../../components/hoc/consoleComponentName";
 
+const NoPage = () => {
     // globalState
     const { globalDispatch } = useContext(Context);
-    const { appState } = useContext(ContextApp);
 
     useEffect(() => {
         globalDispatch(setIsLoading(false));
-    }, []);
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
     }, []);
 
     return (
@@ -37,7 +33,7 @@ const NoPage = () => {
                 <meta name="geo.placename" content="" />
                 <meta name="geo.position" content="45.60000;19.20000" />
                 <meta name="ICBM" content="45.60000;19.20000" />
-                <title>Q Agency | {componentName}</title>
+                <title>Q Agency | 404 page</title>
             </Helmet>
 
             <section
@@ -74,4 +70,4 @@ const NoPage = () => {
     );
 };
 
-export default NoPage;
+export default clgComponentName(NoPage, "NoPage");

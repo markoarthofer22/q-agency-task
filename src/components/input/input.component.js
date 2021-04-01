@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 // component
 import Tooltip from "../tooltip/tooltip.component";
 import SvgIcon from "../svg-icon/svg-icon.component";
 
+// hoc
+import clgComponentName from "../hoc/consoleComponentName";
+
 // styles
 import "./styles.scss";
-
-// context
-import { ContextApp } from "../../contextStore/context";
 
 const InputComponent = ({
     type,
@@ -27,14 +27,6 @@ const InputComponent = ({
     showIcon
 }) => {
     const [showPassword, setShowPassword] = useState(false);
-
-    // state
-    const [componentName] = useState("InputComponent");
-    const { appState } = useContext(ContextApp);
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
 
     return (
         <>
@@ -96,4 +88,4 @@ InputComponent.propTypes = {
     showIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };
 
-export default InputComponent;
+export default clgComponentName(InputComponent, "InputComponent");

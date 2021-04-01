@@ -109,6 +109,7 @@
             color: #1a1a1a;
             font-weight: 600;
             font-family: $font;
+            pointer-events: none;
 
             @include sm {
                 font-size: 1.6rem;

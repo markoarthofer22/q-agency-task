@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 // components
@@ -7,19 +7,11 @@ import SvgIcon from "../svg-icon/svg-icon.component";
 // styles
 import "./styles.scss";
 
-// context
-import { ContextApp } from "../../contextStore/context";
+// hoc
+import clgComponentName from "../hoc/consoleComponentName";
 
 const Tooltip = (props) => {
     const { styles, title, icon } = props;
-
-    // state
-    const { appState } = useContext(ContextApp);
-    const [componentName] = useState("Tooltip");
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
 
     return (
         <span className={`${styles ? styles : ""} tooltip`} tooltiptitle={title ? title : "Not defined"}>
@@ -34,4 +26,4 @@ Tooltip.propTypes = {
     styles: PropTypes.string
 };
 
-export default Tooltip;
+export default clgComponentName(Tooltip, "Tooltip");

@@ -1,19 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 // styles
 import "./styles.scss";
 
-// Context
-import { ContextApp } from "../../contextStore/context";
+import clgComponentName from "../hoc/consoleComponentName";
 
 const HeroBox = (props) => {
     const { heroClass, bgImage, title, subtitle, hasOverlay } = props;
-    const [componentName] = useState("HeroBox");
-    const { appState } = useContext(ContextApp);
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
 
     return (
         <section className={`hero-box ${heroClass ? heroClass : ""}`}>
@@ -48,4 +41,4 @@ HeroBox.propTypes = {
     hasOverlay: PropTypes.bool
 };
 
-export default HeroBox;
+export default clgComponentName(HeroBox, "HeroBox");

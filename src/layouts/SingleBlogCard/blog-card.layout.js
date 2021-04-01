@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import * as moment from "moment";
 // styles
@@ -7,23 +7,17 @@ import "./styles.scss";
 // components
 import SvgIcon from "../../components/svg-icon/svg-icon.component";
 
-// context
-import { ContextApp } from "../../contextStore/context";
+// hoc
+import clgComponentName from "../../components/hoc/consoleComponentName";
 
 const BlogCard = (props) => {
     const { content, title, user, background, date } = props;
-    const { appState } = useContext(ContextApp);
-    const [componentName] = useState("BlogCardSingle");
 
     const trimHeadingText = (_content, _length) => {
         let length = _length ? _length : 100;
 
         return _content.length > length ? _content.substring(0, length - 3) + "..." : _content;
     };
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
 
     return (
         <div className={`blog--single-card`}>
@@ -63,4 +57,4 @@ BlogCard.propTypes = {
     date: PropTypes.string
 };
 
-export default BlogCard;
+export default clgComponentName(BlogCard, "BlogCard");

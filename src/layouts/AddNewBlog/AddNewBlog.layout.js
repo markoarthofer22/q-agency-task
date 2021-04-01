@@ -15,13 +15,14 @@ import SvgIcon from "../../components/svg-icon/svg-icon.component";
 import InputComponent from "../../components/input/input.component";
 
 // context
-import { ContextApp, Context } from "../../contextStore/context";
+import { Context } from "../../contextStore/context";
 import { setIsLoading, setAllPosts, revisedRandId } from "../../contextStore/globals/globalState.actions";
+
+// hoc
+import clgComponentName from "../../components/hoc/consoleComponentName";
 
 const AddNewBlogForm = ({ returnAfterEnd }) => {
     const { globalState, globalDispatch } = useContext(Context);
-    const { appState } = useContext(ContextApp);
-    const [componentName] = useState("AddNewBlogForm");
 
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const SweetAlert = withReactContent(Swal);
@@ -77,10 +78,6 @@ const AddNewBlogForm = ({ returnAfterEnd }) => {
         FormIsSent("New post added successfuly!");
     };
 
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
-
     return (
         <section className="default-form">
             <form noValidate={true} onSubmit={handleSubmit(handleData)} className="form-group" autoComplete="1">
@@ -135,4 +132,4 @@ AddNewBlogForm.propTypes = {
     returnAfterEnd: PropTypes.func
 };
 
-export default AddNewBlogForm;
+export default clgComponentName(AddNewBlogForm, "AddNewBlogForm");

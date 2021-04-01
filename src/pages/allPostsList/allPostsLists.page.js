@@ -16,8 +16,11 @@ import headerBg from "../../assets/img/index_background.png";
 
 // Context
 import axios from "axios";
-import { Context, ContextApp } from "../../contextStore/context";
+import { Context } from "../../contextStore/context";
 import { setIsLoading, setAllPosts } from "../../contextStore/globals/globalState.actions";
+
+// hoc
+import clgComponentName from "../../components/hoc/consoleComponentName";
 
 const BlogList = () => {
     const [filteredBlogs, setFilteredBlogs] = useState([]);
@@ -26,8 +29,6 @@ const BlogList = () => {
 
     // state
     const { globalState, globalDispatch } = useContext(Context);
-    const { appState } = useContext(ContextApp);
-    const [componentName] = useState("BlogList");
 
     const returnValueForBlogs = (_searchText) => {
         if (_searchText.length === 0) {
@@ -55,10 +56,6 @@ const BlogList = () => {
     };
 
     useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
-
-    useEffect(() => {
         // if this route is not accessed directly there already exists
         //  var with all posts so there is no need to request them again
         if (globalState.allPosts.length > 0) {
@@ -83,7 +80,7 @@ const BlogList = () => {
                 <meta name="geo.placename" content="" />
                 <meta name="geo.position" content="45.60000;19.20000" />
                 <meta name="ICBM" content="45.60000;19.20000" />
-                <title>Q Agency | {componentName}</title>
+                <title>Q Agency | All Blogs</title>
             </Helmet>
             <section className="all-blogs-section">
                 <HeroBox
@@ -136,4 +133,4 @@ const BlogList = () => {
     );
 };
 
-export default BlogList;
+export default clgComponentName(BlogList, "BlogList");

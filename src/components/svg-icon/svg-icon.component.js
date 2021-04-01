@@ -1,17 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-// Context
-import { ContextApp } from "../../contextStore/context";
+// hoc
+import clgComponentName from "../hoc/consoleComponentName";
 
 const SvgIcon = ({ icon, iconclass, pureSvg }) => {
-    const { appState } = useContext(ContextApp);
-    const [componentName] = useState("SvgIcon");
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
-
     if (pureSvg) {
         return <svg className={`icon ${iconclass ? iconclass : ""}`} dangerouslySetInnerHTML={{ __html: pureSvg }} />;
     } else {
@@ -29,4 +22,4 @@ SvgIcon.propTypes = {
     pureSvg: PropTypes.bool
 };
 
-export default SvgIcon;
+export default clgComponentName(SvgIcon, "SvgIcon");

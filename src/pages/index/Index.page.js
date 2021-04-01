@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import Helmet from "react-helmet";
 
 //styles
@@ -13,20 +13,17 @@ import headerBg from "../../assets/img/index_background.png";
 
 // Context
 import axios from "axios";
-import { Context, ContextApp } from "../../contextStore/context";
+import { Context } from "../../contextStore/context";
 import { setIsLoading, setAllPosts } from "../../contextStore/globals/globalState.actions";
+
+// hoc
+import clgComponentName from "../../components/hoc/consoleComponentName";
 
 const IndexPage = (props) => {
     const {} = props;
-    const [componentName] = useState("Home");
 
     // global state
     const { globalState, globalDispatch } = useContext(Context);
-    const { appState } = useContext(ContextApp);
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
 
     useEffect(() => {
         axios
@@ -46,7 +43,7 @@ const IndexPage = (props) => {
                 <meta name="geo.placename" content="" />
                 <meta name="geo.position" content="45.60000;19.20000" />
                 <meta name="ICBM" content="45.60000;19.20000" />
-                <title>Q Agency | {componentName}</title>
+                <title>Q Agency | Index</title>
             </Helmet>
             <section className="index-page">
                 <HeroBox
@@ -71,4 +68,4 @@ const IndexPage = (props) => {
     );
 };
 
-export default IndexPage;
+export default clgComponentName(IndexPage, "IndexPage");

@@ -1,17 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-// context
-import { ContextApp } from "../../contextStore/context";
+//hoc
+import clgComponentName from "../hoc/consoleComponentName";
 
 const Button = ({ children, customClass, clicked, title, isLoading, attributes }) => {
-    const [componentName] = useState("Button");
-    const { appState } = useContext(ContextApp);
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
-
     return (
         <button
             title={title}
@@ -34,4 +27,4 @@ Button.propTypes = {
     attributes: PropTypes.object
 };
 
-export default Button;
+export default clgComponentName(Button, "Button");

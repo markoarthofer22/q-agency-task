@@ -11,19 +11,11 @@ import { useForm } from "react-hook-form";
 // styles
 import "./styles.scss";
 
-// context
-import { ContextApp } from "../../contextStore/context";
+// hoc
+import clgComponentName from "../../components/hoc/consoleComponentName";
 
 const BlogSearchBar = ({ customClass, returnSearchParams, inputLabel, inputName, inputValidatorObj, ctaText, returnCtaAction }) => {
     const [searchValue, setSearchValue] = useState("");
-
-    // state
-    const [componentName] = useState("BlogSearchBar");
-    const { appState } = useContext(ContextApp);
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
 
     const { register, handleSubmit, errors } = useForm({
         mode: "onBlur",
@@ -81,4 +73,4 @@ const BlogSearchBar = ({ customClass, returnSearchParams, inputLabel, inputName,
     );
 };
 
-export default BlogSearchBar;
+export default clgComponentName(BlogSearchBar, "BlogSearchBar");

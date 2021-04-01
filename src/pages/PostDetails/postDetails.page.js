@@ -18,14 +18,10 @@ import Axios from "axios";
 import { Context, ContextApp } from "../../contextStore/context";
 import { setIsLoading, setAllPosts, setCurrentPost } from "../../contextStore/globals/globalState.actions";
 
+// hoc
+import clgComponentName from "../../components/hoc/consoleComponentName";
+
 const GallerySwiper = ({ data }) => {
-    const { appState } = useContext(ContextApp);
-    const [componentName] = useState("GallerySwiperInstance");
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
-
     const [params] = useState({
         slidesPerView: "auto",
         spaceBetween: 15,
@@ -62,8 +58,9 @@ GallerySwiper.propTypes = {
     data: PropTypes.array.isRequired
 };
 
+const GallerySwiperWrap = clgComponentName(GallerySwiper, "GallerySwiperBlog");
+
 const BlogSingleDetails = () => {
-    const [componentName] = useState("BlogSingleDetails");
     const [singlePostDetail, setSinglePostDetails] = useState({});
     const [otherPosts, setOtherPosts] = useState([]);
 
@@ -80,10 +77,6 @@ const BlogSingleDetails = () => {
             setGalleryArray([...response.data]);
         });
     };
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
 
     useEffect(() => {
         // if this route is not accessed directly there already exists
@@ -126,7 +119,7 @@ const BlogSingleDetails = () => {
                 <meta name="geo.placename" content="" />
                 <meta name="geo.position" content="45.60000;19.20000" />
                 <meta name="ICBM" content="45.60000;19.20000" />
-                <title>Q Agency | {componentName}</title>
+                <title>Q Agency | Blog Details</title>
             </Helmet>
             {!_.isEmpty(singlePostDetail) && (
                 <section className="blog-single-page">
@@ -147,7 +140,7 @@ const BlogSingleDetails = () => {
                                         {galleryArray.length > 0 && (
                                             <div className="row">
                                                 <div className="col-12">
-                                                    <GallerySwiper data={galleryArray} />
+                                                    <GallerySwiperWrap data={galleryArray} />
                                                 </div>
                                             </div>
                                         )}
@@ -175,4 +168,4 @@ const BlogSingleDetails = () => {
     );
 };
 
-export default BlogSingleDetails;
+export default clgComponentName(BlogSingleDetails, "BlogSingleDetails");

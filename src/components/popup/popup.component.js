@@ -1,5 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
+
+// hoc
+import clgComponentName from "../hoc/consoleComponentName";
 
 // styles
 import "./styles.scss";
@@ -7,19 +10,8 @@ import "./styles.scss";
 // components
 import SvgIcon from "../svg-icon/svg-icon.component";
 
-// context
-import { ContextApp } from "../../contextStore/context";
-
 const Popup = (props) => {
     const { closePopup, children } = props;
-
-    // state
-    const { appState } = useContext(ContextApp);
-    const [componentName] = useState("Popup");
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
 
     useEffect(() => {
         const closeOnEsc = (e) => {
@@ -62,4 +54,4 @@ Popup.propTypes = {
     children: PropTypes.element.isRequired
 };
 
-export default Popup;
+export default clgComponentName(Popup, "Popup");

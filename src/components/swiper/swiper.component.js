@@ -1,23 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import Swiper from "react-id-swiper";
 import PropTypes from "prop-types";
 
 // styles
 import "./styles.scss";
 
-// context
-import { ContextApp } from "../../contextStore/context";
+// hoc
+import clgComponentName from "../hoc/consoleComponentName";
 
 const CustomSwiper = (props) => {
     const { params, children, wrapClass, containerClass, wrapper, additionalClass, noBootstrap } = props;
-
-    // state
-    const { appState } = useContext(ContextApp);
-    const [componentName] = useState("CustomSwiper");
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
 
     let options = {
         slidesPerView: "auto",
@@ -57,4 +49,4 @@ CustomSwiper.propTypes = {
     noBootstrap: PropTypes.string
 };
 
-export default CustomSwiper;
+export default clgComponentName(CustomSwiper, "CustomSwiper");

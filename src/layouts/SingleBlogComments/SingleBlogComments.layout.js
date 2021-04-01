@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import * as moment from "moment";
 import _ from "lodash";
@@ -15,11 +15,13 @@ import Button from "../../components/buttons/button.component";
 import { useForm } from "react-hook-form";
 
 // Context
-import { Context, ContextApp } from "../../contextStore/context";
+import { Context } from "../../contextStore/context";
 import { revisedRandId, setAllPosts, setIsLoading } from "../../contextStore/globals/globalState.actions";
 
+// hoc
+import clgComponentName from "../../components/hoc/consoleComponentName";
+
 const BlogSingleComments = ({ commentsData, title }) => {
-    const [componentName] = useState("BlogSingleComments");
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
     const { register, handleSubmit, errors } = useForm({
@@ -29,7 +31,6 @@ const BlogSingleComments = ({ commentsData, title }) => {
 
     // global state
     const { globalState, globalDispatch } = useContext(Context);
-    const { appState } = useContext(ContextApp);
 
     const handleData = (_data, e) => {
         e.preventDefault();
@@ -55,10 +56,6 @@ const BlogSingleComments = ({ commentsData, title }) => {
         setIsButtonDisabled(false);
         globalDispatch(setAllPosts(tempArr));
     };
-
-    useEffect(() => {
-        console.log(`${appState.propsMessage} ${componentName}`);
-    }, []);
 
     return (
         <section className="comments-section">
@@ -118,4 +115,4 @@ BlogSingleComments.propTypes = {
     commentsData: PropTypes.array.isRequired
 };
 
-export default BlogSingleComments;
+export default clgComponentName(BlogSingleComments, "BlogSingleComments");

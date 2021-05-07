@@ -1,8 +1,8 @@
-import App from "../App";
-import PageNotFound from "../pages/404/404.page";
-import BlogListPage from "../pages/allPostsList/allPostsLists.page";
-import IndexPage from "../pages/index/index.page";
-import BlogSingleDetails from "../pages/PostDetails/postDetails.page";
+import App from '../App.tsx';
+import PageNotFound from '../pages/404/404.page';
+import BlogListPage from '../pages/allPostsList/allPostsLists.page';
+import IndexPage from '../pages/index/Index.page';
+import BlogSingleDetails from '../pages/PostDetails/postDetails.page';
 
 export default [
     {
@@ -10,25 +10,25 @@ export default [
         component: App,
         routes: [
             {
-                path: "/",
+                path: '/',
                 exact: true,
-                component: IndexPage
+                component: IndexPage,
             },
             {
-                path: "/posts",
+                path: '/posts',
                 exact: true,
-                component: BlogListPage
+                component: BlogListPage,
             },
             {
-                path: "/posts/:id",
+                path: '/posts/:id',
                 exact: true,
-                component: BlogSingleDetails
+                component: BlogSingleDetails,
             },
             {
-                path: "*",
+                path: '*',
                 exact: false,
-                component: PageNotFound
-            }
-        ]
-    }
+                component: PageNotFound,
+            },
+        ],
+    },
 ];

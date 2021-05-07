@@ -1,29 +1,29 @@
-import React, { useEffect, useContext } from "react";
-import Helmet from "react-helmet";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useContext } from 'react';
+import Helmet from 'react-helmet';
+import { NavLink } from 'react-router-dom';
 //styles
-import "./styles.scss";
+import './styles.scss';
 
 //assets
-import bgImage from "../../assets/img/blog-bg.png";
-import emoji from "../../assets/img/emoji.png";
+import bgImage from '../../assets/img/blog-bg.png';
+import emoji from '../../assets/img/emoji.png';
 
 // components
-import Button from "../../components/buttons/button.component";
+import Button from '../../components/buttons/button.component';
 
 // context
-import { Context } from "../../contextStore/context";
-import { setIsLoading } from "../../contextStore/globals/globalState.actions";
+import { Context } from '../../contextStore/context';
+import { setIsLoading } from '../../contextStore/globals/globalState.actions';
 
 // hoc
-import clgComponentName from "../../components/hoc/consoleComponentName";
+import clgComponentName from '../../components/hoc/consoleComponentName';
 
-const NoPage = () => {
+const NoPage: React.FC = (): JSX.Element => {
     // globalState
     const { globalDispatch } = useContext(Context);
 
     useEffect(() => {
-        globalDispatch(setIsLoading(false));
+        globalDispatch && globalDispatch(setIsLoading(false));
     }, []);
 
     return (
@@ -39,7 +39,7 @@ const NoPage = () => {
             <section
                 className="no-page"
                 style={{
-                    backgroundImage: "url('" + bgImage + "')"
+                    backgroundImage: "url('" + bgImage + "')",
                 }}
             >
                 <div className="no-page-content">
@@ -48,7 +48,7 @@ const NoPage = () => {
                             4
                             <span
                                 style={{
-                                    backgroundImage: "url('" + emoji + "')"
+                                    backgroundImage: "url('" + emoji + "')",
                                 }}
                             ></span>
                             4
@@ -58,11 +58,16 @@ const NoPage = () => {
                         <span>Oops!</span> We broke <span>something</span>...
                     </h3>
                     <p>
-                        Sorry but the page you are looking for doesn't exist, it has been removed or <br /> it is temporarily unavailable
+                        Sorry but the page you are looking for doesn&#39;t
+                        exist, it has been removed or <br /> it is temporarily
+                        unavailable
                     </p>
 
                     <NavLink to="/">
-                        <Button title="Back to homepage" customClass="no-page--cta" />
+                        <Button
+                            title="Back to homepage"
+                            customClass="no-page--cta"
+                        />
                     </NavLink>
                 </div>
             </section>
@@ -70,4 +75,4 @@ const NoPage = () => {
     );
 };
 
-export default clgComponentName(NoPage, "NoPage");
+export default clgComponentName(NoPage, 'NoPage');

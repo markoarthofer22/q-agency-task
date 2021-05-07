@@ -1,38 +1,41 @@
-import React, { useEffect, useContext } from "react";
-import Helmet from "react-helmet";
+import React, { useEffect, useContext } from 'react';
+import Helmet from 'react-helmet';
 
 //styles
-import "./styles.scss";
+import './styles.scss';
 
 // components
-import HeroBox from "../../components/hero-box/hero-box.component";
-import BlogsList from "../../layouts/BlogsList/BlogsList.layout";
+import HeroBox from '../../components/hero-box/hero-box.component';
+import BlogsList from '../../layouts/BlogsList/BlogsList.layout';
 
 //assets
-import headerBg from "../../assets/img/index_background.png";
+import headerBg from '../../assets/img/index_background.png';
 
 // Context
-import axios from "axios";
-import { Context } from "../../contextStore/context";
-import { setIsLoading, setAllPosts } from "../../contextStore/globals/globalState.actions";
+import axios from 'axios';
+import { Context } from '../../contextStore/context';
+import {
+    setIsLoading,
+    setAllPosts,
+} from '../../contextStore/globals/globalState.actions';
 
 // hoc
-import clgComponentName from "../../components/hoc/consoleComponentName";
+import clgComponentName from '../../components/hoc/consoleComponentName';
 
-const IndexPage = (props) => {
-    const {} = props;
-
+const IndexPage = (): JSX.Element => {
     // global state
     const { globalState, globalDispatch } = useContext(Context);
 
     useEffect(() => {
         axios
-            .get("https://my-json-server.typicode.com/markoarthofer22/q-agency-db/posts")
+            .get(
+                'https://my-json-server.typicode.com/markoarthofer22/q-agency-db/posts'
+            )
             .then((response) => {
-                globalDispatch(setAllPosts(response.data));
+                globalDispatch && globalDispatch(setAllPosts(response.data));
             })
             .finally(() => {
-                globalDispatch(setIsLoading(false));
+                globalDispatch && globalDispatch(setIsLoading(false));
             });
     }, []);
 
@@ -52,12 +55,17 @@ const IndexPage = (props) => {
                     subtitle="Stay up to date on industry news and the best of chain management."
                 />
 
-                {globalState?.allPosts?.length > 0 && (
+                {globalState && globalState?.allPosts?.length > 0 && (
                     <section className="latest-blogs">
                         <div className="container">
                             <div className="row">
                                 <div className="col-12">
-                                    <BlogsList data={globalState.allPosts} limit={3} showMore holderClass="list-home" />
+                                    <BlogsList
+                                        data={globalState.allPosts}
+                                        limit={3}
+                                        showMore
+                                        holderClass="list-home"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -68,4 +76,4 @@ const IndexPage = (props) => {
     );
 };
 
-export default clgComponentName(IndexPage, "IndexPage");
+export default clgComponentName(IndexPage, 'IndexPage');

@@ -1,17 +1,39 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 // component
-import Tooltip from "../tooltip/tooltip.component";
-import SvgIcon from "../svg-icon/svg-icon.component";
+import Tooltip from '../tooltip/tooltip.component';
+import SvgIcon from '../svg-icon/svg-icon.component';
 
 // hoc
-import clgComponentName from "../hoc/consoleComponentName";
+import clgComponentName from '../hoc/consoleComponentName';
 
 // styles
-import "./styles.scss";
+import './styles.scss';
+import {
+    FieldError,
+    FieldValues,
+    NestDataObject,
+} from 'react-hook-form/dist/types';
+import { iSearchBarValidatorObj } from 'layouts/BlogSearchBar/search.component';
 
-const InputComponent = ({
+interface iInputProps {
+    type?: string;
+    name?: string | null;
+    inputClass?: string;
+    required: iSearchBarValidatorObj;
+    errorMessage?: NestDataObject<FieldValues, FieldError>;
+    register?: any;
+    labelText?: string;
+    onEveryChange: (e: any) => void;
+    inputValue?: string;
+    tooltip?: string;
+    disabled?: boolean;
+    showPasswordIcon?: boolean;
+    showIcon?: boolean | string;
+}
+
+const InputComponent: React.FC<iInputProps> = ({
     type,
     name,
     inputClass,
@@ -24,26 +46,32 @@ const InputComponent = ({
     tooltip,
     disabled,
     showPasswordIcon,
-    showIcon
+    showIcon,
 }) => {
     const [showPassword, setShowPassword] = useState(false);
 
     return (
         <>
             <input
-                type={showPassword ? "text" : type ? type : "text"}
+                type={showPassword ? 'text' : type ? type : 'text'}
                 disabled={disabled}
                 required
-                name={name ? name : null}
+                name={name ? name : undefined}
                 autoComplete="0"
-                className={`${inputClass ? inputClass : "input-default"} ${errorMessage && "invalid"}`}
-                error={errorMessage ? errorMessage.message : null}
+                className={`${inputClass ? inputClass : 'input-default'} ${
+                    errorMessage && 'invalid'
+                }`}
+                data-error={errorMessage ? errorMessage.message : undefined}
                 value={inputValue && inputValue.toString()}
                 ref={register ? register({ ...required }) : null}
                 onChange={(e) => (onEveryChange ? onEveryChange(e) : null)}
             />
-            <label htmlFor={name ? name : null} className={`floating-label ${tooltip ? "flexed" : ""}`}>
-                {labelText} {tooltip && <Tooltip title={tooltip} styles="custom-tooltip" />}
+            <label
+                htmlFor={name ? name : undefined}
+                className={`floating-label ${tooltip ? 'flexed' : ''}`}
+            >
+                {labelText}{' '}
+                {tooltip && <Tooltip title={tooltip} styles="custom-tooltip" />}
             </label>
 
             {showIcon && <SvgIcon icon={showIcon} />}
@@ -67,25 +95,30 @@ const InputComponent = ({
                     />
                 </span>
             )}
-            {errorMessage && <span name={name ? name : null} error={errorMessage && errorMessage.message} />}
+            {errorMessage && (
+                <span
+                    data-name={name ? name : undefined}
+                    data-error={errorMessage && errorMessage.message}
+                />
+            )}
         </>
     );
 };
 
-InputComponent.propTypes = {
-    type: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    inputClass: PropTypes.string,
-    required: PropTypes.object.isRequired,
-    errorMessage: PropTypes.object,
-    register: PropTypes.func,
-    labelText: PropTypes.string,
-    onEveryChange: PropTypes.func,
-    inputValue: PropTypes.string,
-    tooltip: PropTypes.string,
-    disabled: PropTypes.bool,
-    showPasswordIcon: PropTypes.bool,
-    showIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
-};
+// InputComponent.propTypes = {
+//     type: PropTypes.string,
+//     name: PropTypes.string.isRequired,
+//     inputClass: PropTypes.string,
+//     required: PropTypes.object.isRequired,
+//     errorMessage: PropTypes.object,
+//     register: PropTypes.func,
+//     labelText: PropTypes.string,
+//     onEveryChange: PropTypes.func,
+//     inputValue: PropTypes.string,
+//     tooltip: PropTypes.string,
+//     disabled: PropTypes.bool,
+//     showPasswordIcon: PropTypes.bool,
+//     showIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+// };
 
-export default clgComponentName(InputComponent, "InputComponent");
+export default clgComponentName(InputComponent, 'InputComponent');
